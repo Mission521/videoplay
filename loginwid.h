@@ -9,6 +9,8 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QLineEdit>
+#include <qlist.h>
+#include "user.h"
 
 class loginwid : public QWidget
 {
@@ -18,12 +20,14 @@ public:
 	loginwid(QWidget *parent = Q_NULLPTR);
 	~loginwid();
 
-	QLabel* user;
+	QLabel* luser;
 	QLabel* passwd;
 	QLineEdit* useredit;
 	QLineEdit* passwdedit;
 	QPushButton* ok;
 	QPushButton* sign;
+
+	QList<user *> myuser;
 
 public slots:
 	void okslots();

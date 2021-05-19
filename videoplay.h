@@ -10,6 +10,7 @@
 #include"leftwid.h"
 #include"mainwid.h"
 #include"loginwid.h"
+#include"playwid.h"
 
 class videoplay : public QWidget
 {

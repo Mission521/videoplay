@@ -51,6 +51,12 @@
     <ClCompile Include="mainwid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="playwid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="topwid.h">
@@ -63,6 +69,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="mainwid.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="playwid.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -79,6 +88,9 @@
     <QtUic Include="mainwid.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="playwid.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <Image Include="image\faxzvzxc.png">
@@ -90,5 +102,10 @@
     <Image Include="image\zvzv.png">
       <Filter>Resource Files\iamge</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="user.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

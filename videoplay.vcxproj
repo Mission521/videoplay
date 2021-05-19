@@ -16,6 +16,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
@@ -23,7 +24,7 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;multimedia;multimediawidgets;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
@@ -56,13 +57,16 @@
     <QtUic Include="leftwid.ui" />
     <QtUic Include="loginwid.ui" />
     <QtUic Include="mainwid.ui" />
+    <QtUic Include="playwid.ui" />
     <QtUic Include="topwid.ui" />
     <QtUic Include="videoplay.ui" />
     <QtMoc Include="videoplay.h" />
     <ClCompile Include="leftwid.cpp" />
     <ClCompile Include="loginwid.cpp" />
     <ClCompile Include="mainwid.cpp" />
+    <ClCompile Include="playwid.cpp" />
     <ClCompile Include="topwid.cpp" />
+    <ClCompile Include="user.cpp" />
     <ClCompile Include="videoplay.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -82,6 +86,12 @@
     <Image Include="image\faxzvzxc.png" />
     <Image Include="image\safas.png" />
     <Image Include="image\zvzv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="playwid.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="user.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
