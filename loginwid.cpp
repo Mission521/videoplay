@@ -64,7 +64,7 @@ void loginwid::okslots()
         else if (strcmp(uname.toLatin1(), myuser.at(i)->username.toLatin1()) == 0 && strcmp(upwd.toLatin1(),myuser.at(i)->userpwd.toLatin1()) == 0)
         {
             qDebug() << "µÇÂ½³É¹¦";
-            playwid* viplay = new playwid;
+            videoplay* viplay = new videoplay;
             viplay->show();
             this->close();
             break;

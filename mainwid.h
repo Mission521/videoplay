@@ -7,6 +7,7 @@
 #include <QWidget>
 #include "ui_mainwid.h"
 #include <qlistwidget.h>
+#include "playwid.h"
 
 class mainwid : public QWidget
 {
@@ -17,6 +18,11 @@ public:
 	~mainwid();
 
 	QListWidget* listwd;
+
+	playwid* playwd = new playwid;
+
+public slots:
+	void ItemSlot(QListWidgetItem* item);
 
 private:
 	Ui::mainwid ui;

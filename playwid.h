@@ -12,6 +12,7 @@
 #include <qpushbutton.h>
 #include <qurl.h>
 #include <qstring.h>
+#include <qlabel.h>
 
 class playwid : public QWidget
 {
@@ -24,14 +25,20 @@ public:
 	QMediaPlayer* player;
 	QVideoWidget* videowid;
 	QSlider* slid;
-	QPushButton* btn_choise;
+	QPushButton* btn_stop;
 	QPushButton* btn_play;
+	QLabel* time;
+	QLabel* totaltime;
+	QLabel* placeholder;
 
 	void Seturl(const QUrl &url);
 
 public slots:
-	void openFile();
+	void StopVideo();
 	void Playvideo();
+	void positionChangedSlot(qint64 i);
+	void durationChangedSlot(qint64 i);
+	void sliderMovedSlot(int i);
 
 private:
 	Ui::playwid ui;
