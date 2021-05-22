@@ -21,15 +21,14 @@ mainwid::mainwid(QWidget *parent)
     listwd->horizontalScrollBar()->setDisabled(true);
 
     QString path = QString(QDir::currentPath() + "/" + "image");
-    qDebug() << "·����" << path;
+    qDebug() << "Â·¾¶£º" << path;
     QDir dir(path);
     QStringList files = dir.entryList(QDir::Files | QDir::Readable, QDir::Name);
-    qDebug() << "�زģ�" << files;
+    qDebug() << "ËØ²Ä£º" << files;
     
 
     for (int i = 0; i < files.count(); i++)
     {
-        //QString name = files.at(i).split(".");
         QString file = QString("image/%1").arg(files.at(i));
         QStringList name = files.at(i).split(".");
         QString fname = name[0];
