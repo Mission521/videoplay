@@ -25,18 +25,33 @@ mainwid::mainwid(QWidget *parent)
     QDir dir(path);
     QStringList files = dir.entryList(QDir::Files | QDir::Readable, QDir::Name);
     qDebug() << "ËØ²Ä£º" << files;
+    
 
     for (int i = 0; i < files.count(); i++)
     {
         QString file = QString("image/%1").arg(files.at(i));
-        //QString name = path.mid(6);
+        QStringList name = files.at(i).split(".");
+        QString fname = name[0];
         QPixmap pic(file);
-        QListWidgetItem* item = new QListWidgetItem(QIcon(pic.scaled(QSize(W_ICON, H_ICON))), files.at(i));
+        QListWidgetItem* item = new QListWidgetItem(QIcon(pic.scaled(QSize(W_ICON, H_ICON))), fname);
         item->setSizeHint(QSize(W_ICON, H_ITEM));
         listwd->insertItem(i, item);
     }
 
     listwd->show();
+
+    connect(listwd, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(ItemSlot(QListWidgetItem*)));
+}
+
+void mainwid::ItemSlot(QListWidgetItem* item)
+{
+    QString text = item->text();
+    QStringList list = text.split(".");
+    QString names = list[0];
+    QString filename = QString(QDir::currentPath() + "/" + "image/vid/%1.mp4").arg(names);
+    playwd->Seturl(filename);
+    playwd->player->play();
+    playwd->show();
 }
 
 mainwid::~mainwid()
