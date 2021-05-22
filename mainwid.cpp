@@ -29,6 +29,7 @@ mainwid::mainwid(QWidget *parent)
 
     for (int i = 0; i < files.count(); i++)
     {
+        //QString name = files.at(i).split(".");
         QString file = QString("image/%1").arg(files.at(i));
         QStringList name = files.at(i).split(".");
         QString fname = name[0];
