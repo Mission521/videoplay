@@ -21,10 +21,10 @@ mainwid::mainwid(QWidget *parent)
     listwd->horizontalScrollBar()->setDisabled(true);
 
     QString path = QString(QDir::currentPath() + "/" + "image");
-    qDebug() << "Â·¾¶£º" << path;
+    qDebug() << "路径" << path;
     QDir dir(path);
     QStringList files = dir.entryList(QDir::Files | QDir::Readable, QDir::Name);
-    qDebug() << "ËØ²Ä£º" << files;
+    qDebug() << "资源" << files;
     
 
     for (int i = 0; i < files.count(); i++)
@@ -50,6 +50,7 @@ void mainwid::ItemSlot(QListWidgetItem* item)
     QString names = list[0];
     QString filename = QString(QDir::currentPath() + "/" + "image/vid/%1.mp4").arg(names);
     playwd->Seturl(filename);
+    qDebug() << "sp" << filename;
     playwd->player->play();
     playwd->show();
 }

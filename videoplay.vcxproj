@@ -9,7 +9,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7B462E65-A4EC-42FC-94AE-5D0BA7EFA3A3}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
-    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -39,6 +39,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
     <ClCompile>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -58,6 +63,7 @@
     <QtUic Include="loginwid.ui" />
     <QtUic Include="mainwid.ui" />
     <QtUic Include="playwid.ui" />
+    <QtUic Include="regiswid.ui" />
     <QtUic Include="topwid.ui" />
     <QtUic Include="videoplay.ui" />
     <QtMoc Include="videoplay.h" />
@@ -65,6 +71,7 @@
     <ClCompile Include="loginwid.cpp" />
     <ClCompile Include="mainwid.cpp" />
     <ClCompile Include="playwid.cpp" />
+    <ClCompile Include="regiswid.cpp" />
     <ClCompile Include="topwid.cpp" />
     <ClCompile Include="user.cpp" />
     <ClCompile Include="videoplay.cpp" />
@@ -83,15 +90,16 @@
     <QtMoc Include="mainwid.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="image\faxzvzxc.png" />
-    <Image Include="image\safas.png" />
-    <Image Include="image\zvzv.png" />
-  </ItemGroup>
-  <ItemGroup>
     <QtMoc Include="playwid.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="regiswid.h" />
     <ClInclude Include="user.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="image\05-16.png" />
+    <Image Include="image\05-19.png" />
+    <Image Include="image\05-22.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
