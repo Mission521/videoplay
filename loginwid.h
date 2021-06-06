@@ -11,6 +11,9 @@
 #include <QLineEdit>
 #include <qlist.h>
 #include "user.h"
+#include "regiswid.h"
+
+//QList<user*> lguser;
 
 class loginwid : public QWidget
 {
@@ -27,10 +30,13 @@ public:
 	QPushButton* ok;
 	QPushButton* sign;
 
-	QList<user *> myuser;
+//	QList<user *> lguser;
+
+	void Adduser(const QString &uname,const QString &upwd);
 
 public slots:
 	void okslots();
+	void goregis();
 
 private:
 	Ui::loginwid ui;

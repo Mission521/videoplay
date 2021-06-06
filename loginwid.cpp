@@ -6,6 +6,8 @@
 #include <qstring.h>
 #include "playwid.h"
 
+QList<user*> lguser;
+
 loginwid::loginwid(QWidget *parent)
 	: QWidget(parent)
 {
@@ -23,6 +25,8 @@ loginwid::loginwid(QWidget *parent)
     sign->setText("注册");
     luser->setText("用户名");
     passwd->setText("密码");
+    useredit->setPlaceholderText("请输入用户名");
+    passwdedit->setPlaceholderText("请输入密码");
     passwdedit->setEchoMode(QLineEdit::Password);
 
     QGridLayout* glayout = new QGridLayout;
@@ -41,12 +45,13 @@ loginwid::loginwid(QWidget *parent)
 
     this->setLayout(vbox);
 
-    myuser.append(new user("admin","123"));
-    myuser.append(new user("test","321"));
-    qDebug() << myuser.at(1)->username << myuser.at(1)->userpwd;
+    lguser.append(new user("admin","123"));
+    lguser.append(new user("test","321"));
+    for (int i = 0 ; i < lguser.count() ; i++)
+        qDebug() << lguser.at(i)->username << lguser.at(i)->userpwd;
 
     connect(ok, SIGNAL(clicked()), this, SLOT(okslots()));
-    connect(sign, SIGNAL(clicked()), this, SLOT(close()));
+    connect(sign, SIGNAL(clicked()), this, SLOT(goregis()));
 }
 
 void loginwid::okslots()
@@ -55,7 +60,7 @@ void loginwid::okslots()
     QString upwd = passwdedit->text();
 
     int flag;
-    for (int i = 0; i < myuser.count(); i++)
+    for (int i = 0; i < lguser.count(); i++)
     {
        /* qDebug() << myuser.at(i)->username << myuser.at(i)->userpwd;
         if (uname == NULL || upwd == NULL)
@@ -80,9 +85,9 @@ void loginwid::okslots()
         if (uname == NULL || upwd == NULL) {
             flag = 1;
             break;
-        } else if(uname != myuser.at(i)->username || upwd != myuser.at(i)->userpwd) {
+        } else if(uname != lguser.at(i)->username || upwd != lguser.at(i)->userpwd) {
             flag = 2;
-        } else if (uname == myuser.at(i)->username && upwd == myuser.at(i)->userpwd) {
+        } else if (uname == lguser.at(i)->username && upwd == lguser.at(i)->userpwd) {
             flag = 3;
             break;
         }
@@ -101,6 +106,18 @@ void loginwid::okslots()
         break; 
 
     }
+}
+
+void loginwid::goregis()
+{
+    regiswid* regwd = new regiswid;
+    regwd->show();
+    this->close();
+}
+
+void loginwid::Adduser(const QString &uname,const QString &upwd)
+{
+    lguser.append(new user(uname, upwd));
 }
 
 loginwid::~loginwid()
