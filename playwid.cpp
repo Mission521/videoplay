@@ -85,9 +85,11 @@ void playwid::Playvideo()
 	{
 	case QMediaPlayer::PlayingState:
 		player->pause();
+		btn_play->setText("²¥·Å");
 		break;
 	default:
 		player->play();
+		btn_play->setText("ÔÝÍ£");
 		break;
 	}
 }

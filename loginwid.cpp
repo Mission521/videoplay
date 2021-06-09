@@ -6,6 +6,7 @@
 #include <qstring.h>
 #include "playwid.h"
 
+
 QList<user*> lguser;
 
 loginwid::loginwid(QWidget *parent)
@@ -14,8 +15,13 @@ loginwid::loginwid(QWidget *parent)
 	//ui.setupUi(this);
     this->setWindowTitle("登录");
 
+    QString bgColor = "#FFFFFF";    //背景颜色
+    QString borderColor = "#A6B5B8";//边框颜色
+
     luser = new QLabel;
     passwd = new QLabel;
+    b_ico = new QPushButton;
+
     useredit = new QLineEdit;
     passwdedit = new QLineEdit;
     ok = new QPushButton;
@@ -28,12 +34,33 @@ loginwid::loginwid(QWidget *parent)
     useredit->setPlaceholderText("请输入用户名");
     passwdedit->setPlaceholderText("请输入密码");
     passwdedit->setEchoMode(QLineEdit::Password);
+    passwdedit->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+    b_ico->resize(20, 20);
+    b_ico->setStyleSheet(QString("border:0px;background-color:%1").arg(bgColor));
+    b_ico->setFlat(true);
+    b_ico->setIcon(QPixmap("image/ico/eye_close"));
+
+    QFrame* frame = new QFrame;
+    frame->setObjectName("framePassword");
+
+    QStringList qss;
+    qss.append(QString("QFrame#framePassword{border:1px solid %1;background-color:%2;}").arg(borderColor).arg(bgColor));
+    qss.append(QString("QPushButton{min-width:15px;background-color:%1;}").arg(bgColor));
+    qss.append(QString("QLineEdit{background-color:%1;border:none;}").arg(bgColor));
+    frame->setStyleSheet(qss.join(""));
+
+    QHBoxLayout* l_ico = new QHBoxLayout(frame);
+    l_ico->setMargin(0);
+    l_ico->setSpacing(0);
+    l_ico->addWidget(passwdedit);
+    l_ico->addWidget(b_ico);
 
     QGridLayout* glayout = new QGridLayout;
     glayout->addWidget(luser, 0, 0);
     glayout->addWidget(useredit, 0, 1);
     glayout->addWidget(passwd, 1, 0);
-    glayout->addWidget(passwdedit, 1, 1);
+    glayout->addWidget(frame,1,1);
 
     QHBoxLayout* hbox = new QHBoxLayout;
     hbox->addWidget(ok);
@@ -52,6 +79,7 @@ loginwid::loginwid(QWidget *parent)
 
     connect(ok, SIGNAL(clicked()), this, SLOT(okslots()));
     connect(sign, SIGNAL(clicked()), this, SLOT(goregis()));
+    connect(b_ico, SIGNAL(clicked()), this, SLOT(changeshow()));
 }
 
 void loginwid::okslots()
@@ -98,7 +126,7 @@ void loginwid::okslots()
     case 1:QMessageBox::information(NULL, "ERROR", "用户名或密码不能为空！"); break;
     case 2:QMessageBox::information(NULL, "ERROR", "用户名或密码错误！"); break;
     default: 
-
+        
         qDebug() << "登陆成功";
         videoplay* viplay = new videoplay;
         viplay->show();
@@ -113,6 +141,23 @@ void loginwid::goregis()
     regiswid* regwd = new regiswid;
     regwd->show();
     this->close();
+}
+
+int tag = 0;
+void loginwid::changeshow()
+{
+    if (tag == 0)
+    {
+        tag = 1;
+        passwdedit->setEchoMode(QLineEdit::Normal);
+        b_ico->setIcon(QPixmap("image/ico/eye_open"));
+    }
+    else if (tag == 1)
+    {
+        tag = 0;
+        passwdedit->setEchoMode(QLineEdit::Password);
+        b_ico->setIcon(QPixmap("image/ico/eye_close"));
+    }
 }
 
 void loginwid::Adduser(const QString &uname,const QString &upwd)
