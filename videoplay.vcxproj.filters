@@ -17,8 +17,8 @@
       <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
       <Extensions>ui</Extensions>
     </Filter>
-    <Filter Include="Resource Files\iamge">
-      <UniqueIdentifier>{6cb3a204-f7ed-4036-9eb4-0e3b1f815016}</UniqueIdentifier>
+    <Filter Include="Resource Files\image">
+      <UniqueIdentifier>{f2ebc243-ab81-4ef9-aefc-2a4a156275be}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +57,9 @@
     <ClCompile Include="user.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="regiswid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="topwid.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="playwid.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="regiswid.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -91,21 +97,24 @@
     <QtUic Include="playwid.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="image\faxzvzxc.png">
-      <Filter>Resource Files\iamge</Filter>
-    </Image>
-    <Image Include="image\safas.png">
-      <Filter>Resource Files\iamge</Filter>
-    </Image>
-    <Image Include="image\zvzv.png">
-      <Filter>Resource Files\iamge</Filter>
-    </Image>
+    <QtUic Include="regiswid.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="user.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="image\05-16.png">
+      <Filter>Resource Files\image</Filter>
+    </Image>
+    <Image Include="image\05-19.png">
+      <Filter>Resource Files\image</Filter>
+    </Image>
+    <Image Include="image\05-22.png">
+      <Filter>Resource Files\image</Filter>
+    </Image>
   </ItemGroup>
 </Project>
